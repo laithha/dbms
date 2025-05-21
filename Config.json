@@ -1,0 +1,20 @@
+﻿{
+    "FormCaption": "Gold Jewelry Management System",
+    "ConnectionString": "Data Source=LAPTOP-VND53B0H\\SQLEXPRESS;Initial Catalog=goldjewlery;Integrated Security=True;Encrypt=False;TrustServerCertificate=True",
+    "MasterTable": { 
+        "TableName": "Clients",
+        "DisplayName": "Clients",
+        "SelectQuery": "SELECT * FROM Clients",
+        "DisplayColumns": [ "ClientID", "FirstName", "LastName", "Phone", "Email", "Address" ]
+    },
+    "DetailTable": {
+        "TableName": "PurchaseOrders",
+        "DisplayName": "Purchase Orders",
+        "SelectQuery": "SELECT OrderID, OrderDate, ClientID, StaffID, VendorID FROM PurchaseOrders WHERE ClientID = @ClientID",
+        "InsertQuery": "INSERT INTO PurchaseOrders(OrderDate, ClientID, StaffID, VendorID) VALUES(@OrderDate, @ClientID, @StaffID, @VendorID)",
+        "UpdateQuery": "UPDATE PurchaseOrders SET OrderDate = @OrderDate, StaffID = @StaffID, VendorID = @VendorID WHERE OrderID = @OrderID",
+        "DeleteQuery": "DELETE FROM PurchaseOrders WHERE OrderID = @OrderID",
+        "DisplayColumns": [ "OrderID", "OrderDate", "ClientID", "StaffID", "VendorID" ],
+        "InputColumns": [ "OrderDate", "StaffID", "VendorID" ]
+    }
+} 
